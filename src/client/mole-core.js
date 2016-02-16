@@ -10,10 +10,10 @@ require('./page.scss');
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
 import App from './components/app';
-import Example from './components/example/example';
+import Cube from './components/cube/cube';
 
 (() => {
-  var pageState = {
+  var gameState = {
     appElement: document.getElementById('app'),
     images: [
       {
@@ -27,17 +27,17 @@ import Example from './components/example/example';
     ]
   };
 
-  var app = new App(pageState);
-  var example = new Example(app);
+  var app = new App(gameState);
+  var cube = new Cube(app);
 
   const CLICKED_CLASS = '_open';
 
   function init() {
     // render example
-    example.createImages();
+    cube.createImages();
 
     // bind example
-    example.bindExample(CLICKED_CLASS);
+    cube.bindExample(CLICKED_CLASS);
   }
 
   init();

@@ -1,4 +1,4 @@
-require('./example.scss');
+require('./cube.scss');
 
 /**
  * @class Example

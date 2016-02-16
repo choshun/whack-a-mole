@@ -8,7 +8,7 @@ Should be quick and easy. Nothing too fancy here.
 2. $ npm install
 3. $ npm start
 4. $ npm run webpack-watch
-5. go to http://localhost:1250/
+5. go to http://localhost:1200/
 
 ###File Structure
 
