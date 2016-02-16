@@ -50,13 +50,14 @@ class Example {
     this.render(html);
   }
 
-  bindExample(CLICKED_CLASS) {
-    var imageList = document.querySelector('.image-list');
+  bindMole() {
+    var mole = document.querySelector('.mole');
 
-    imageList.addEventListener('click', (event) => {
-      event.target.classList.add(CLICKED_CLASS);
-      this.state.appElement.querySelector('h1').innerHTML =
-          event.target.getAttribute('id');
+    console.log('wired', mole);
+
+    mole.addEventListener('click', (event) => {
+      // event.target.classList.add(CLICKED_CLASS);
+      console.log('click!');
     });
   }
 

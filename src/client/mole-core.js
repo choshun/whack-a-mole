@@ -34,10 +34,10 @@ import Cube from './components/cube/cube';
 
   function init() {
     // render example
-    cube.createImages();
+    // cube.createImages();
 
     // bind example
-    cube.bindExample(CLICKED_CLASS);
+    cube.bindMole();
   }
 
   init();

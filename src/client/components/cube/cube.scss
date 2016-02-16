@@ -1,21 +1,10 @@
-.item {
-  background-position: center 20%;
-  background-size: cover;
-  float: left;
-  height: 10%;
-  overflow: hidden;
-  width: 50%;
-  img {
-    width: 100%;
-  }
-}
-
 .container {
-  border: 1px solid #ccc;
-  height: 270px;
+  $container-dimension: 270px;
+
+  height: $container-dimension;
   margin: 0 auto;
   position: relative;
-  width: 270px;
+  width: $container-dimension;
 }
 
 .cube {
@@ -32,22 +21,22 @@
 
   .right {
     background: rgba(199, 253, 0, $opacity);
-    transform: rotateY( 90deg ) translateZ( 100px );
+    transform: rotateY( 140deg ) translateZ( 100px );
   }
 
   .top {
     background-color: rgba(255, 238, 0, $opacity);
-    transform: rotateX( 90deg ) translateZ( 100px );
+    transform: rotateX( 140deg ) translateZ( 100px );
   }
 
   .left {
     background-color: rgba(199, 253, 0, $opacity);
-    transform: rotateY( -90deg ) translateZ( 100px );
+    transform: rotateY( -140deg ) translateZ( 100px );
   }
 
   .bottom {
     background-color: rgba(255, 238, 0, $opacity);
-    transform: rotateX( -90deg ) translateZ( 100px );
+    transform: rotateX( -140deg ) translateZ( 100px );
   }
 
   figure {
@@ -66,19 +55,20 @@
 	  background-color: rgba(242, 0, 204, $opacity);
 	  border: 0;
 	  color: #fff;
+	  cursor: pointer;
 	  font-size: .5em;
 	  font-weight: 100;
 	  height: 100%;
-	  left: 129px;
+	  left: 29px;
 	  margin: 0;
 	  padding: 0;
-	  position: relative;
-	  top: -20px;
+	  position: absolute;
 	  width: 100%;
 	}
 
 	.score {
 		display: block;
+		font-size: 70px;
 		transform: rotate(180deg) scale(-1, 1);
 	}
 }
