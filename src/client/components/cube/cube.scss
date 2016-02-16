@@ -19,45 +19,71 @@
 }
 
 .cube {
+  $opacity: .7;
+  $cube-dimension: 196px;
+
   transform: translateZ( 60px );
   transform-style: preserve-3d;
-  
+
   .back {
-    background-color: rgba(252,255,0,.7);
-    transform: rotateX( -180deg ) translateZ( 120px );
+    background-color: rgba(255, 197, 0, $opacity);
+    transform: rotateX( -180deg ) translateZ( 100px );
   }
 
   .right {
-    background: hsla( 120, 100%, 50%, .7 );
+    background: rgba(199, 253, 0, $opacity);
     transform: rotateY( 90deg ) translateZ( 100px );
   }
 
   .top {
-    background-color: hsla( 240, 100%, 50%, .7 );
+    background-color: rgba(255, 238, 0, $opacity);
     transform: rotateX( 90deg ) translateZ( 100px );
   }
+
   .left {
-    background-color: hsla( 180, 100%, 50%, .7 );
+    background-color: rgba(199, 253, 0, $opacity);
     transform: rotateY( -90deg ) translateZ( 100px );
   }
 
   .bottom {
-    background-color: hsla( 300, 100%, 50%, .7 );
+    background-color: rgba(255, 238, 0, $opacity);
     transform: rotateX( -90deg ) translateZ( 100px );
   }
 
   figure {
-    border: 2px solid black;
-    color: white;
     display: block;
     font-size: 120px;
-    font-weight: bold;
-    height: 196px;
-    line-height: 196px;
+    height: $cube-dimension;
+    line-height: $cube-dimension;
     margin: 0;
     position: absolute;
     text-align: center;
     transform: rotateX( -180deg ) translateZ( 13px );
-    width: 196px;
+    width: $cube-dimension;
   }
+
+	.mole {
+	  background-color: rgba(242, 0, 204, $opacity);
+	  border: 0;
+	  color: #fff;
+	  font-size: .5em;
+	  font-weight: 100;
+	  height: 100%;
+	  left: 129px;
+	  margin: 0;
+	  padding: 0;
+	  position: relative;
+	  top: -20px;
+	  width: 100%;
+	}
+
+	.score {
+		display: block;
+		transform: rotate(180deg) scale(-1, 1);
+	}
+}
+
+.accessible {
+	position: relative;
+	left: -9999em;
 }
