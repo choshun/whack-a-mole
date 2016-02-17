@@ -59,6 +59,10 @@
 	  padding: 0;
 	  position: absolute;
 	  width: 100%;
+
+	  // TODO: faster moles
+	  // &.fast,
+	  // &.fastest
 	}
 
 	.score {
@@ -80,7 +84,7 @@
   margin: 10% auto;
   position: relative;
   width: $container-dimension;
-  
+
 	transition: all 3s cubic-bezier(.23, 1, .32, 1);
 	perspective: 10000px;
 	perspective-origin: 33% 32%;

@@ -6,6 +6,8 @@
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
 class App {
+  // TODO: need global total time in secs, context.currenttime
+
   /*
    * @constructs App
    *

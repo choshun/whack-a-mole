@@ -1,9 +1,10 @@
 require('./cube.scss');
 
 /**
- * @class Example
+ * @class Cube
  *
- * Example
+ * registers hits and sets off moles, adds classes that move it
+ * just have a setTimeout with a time started by the scheduler
  *
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
@@ -50,6 +51,7 @@ class Example {
     this.render(html);
   }
 
+  // TESTING for sequence
   bindMole() {
     var mole = document.querySelector('.mole');
 
