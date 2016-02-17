@@ -1,12 +1,5 @@
-.container {
-  $container-dimension: 270px;
 
-  height: $container-dimension;
-  margin: 10% auto;
-  position: relative;
-  width: $container-dimension;
-}
-
+// pretty! rgba(242,0,204,.7)
 .cube {
   $opacity: .7;
   $cube-dimension: 196px;
@@ -80,9 +73,14 @@
 	left: -9999em;
 }
 
-.app {}
-
 .container {
+	$container-dimension: 270px;
+
+  height: $container-dimension;
+  margin: 10% auto;
+  position: relative;
+  width: $container-dimension;
+  
 	transition: all 3s cubic-bezier(.23, 1, .32, 1);
 	perspective: 10000px;
 	perspective-origin: 33% 32%;
@@ -94,28 +92,23 @@
 		perspective-origin: 33% 32%;
 	}
 	
-	 // 170 deg
-	.open {
+	 // 170deg
+	&.open {
+		.right {
+	    transform: rotateY(160deg) translateZ(10px);
+	  }
 
-	}
+	  .top {
+	    transform: rotateX( 150deg ) translateZ( 90px );
+	  }
 
-	// look like a square
-	&.flat {
-		.back {
-			transform: rotateX(-180deg) translateZ(26px);
+	  .left {
+	    transform: rotateY( -150deg ) translateZ( 90px );
+	  }
 
-			.score {
-				font-size: .1em;
-				transition: all 5s cubic-bezier(.23, 1, .32, 1);
-			}	
-		}
-
-		.right,
-		.top,
-		.left,
-		.bottom {
-			opacity: 0;
-		}
+	  .bottom {
+	    transform: rotateX( -140deg ) translateZ( 110px );
+	  }
 	}
 
 	// 90deg agles
@@ -138,39 +131,27 @@
 	}
 
 	// change figure height
-	.tall {
-
+	&.tall {
+		figure {
+			height: 400px;
+			transition: all 15s cubic-bezier(.23, 1, .32, 1);
+		}
 	}
 
 	// change figure width
-	.wide {
-
-	}
-
-	// perspective lower left
-	.perspective {
-		&.lower-left {
-
+	&.wide {
+		figure {
+			width: 350px;
+			transition: all 15s cubic-bezier(.23, 1, .32, 1);
 		}
 	}
 
 	// perspective lower right
-
-	// perspective upper left
-
-	// perspective upper right
-
-	// sides moved to left
-
-	// sides to the right
-
-	// top bottom up
-
-	// top bottom down
-
-	// bg colors (4)
-
-	// panel colors (4) 
+	&.perspective-lower-right {
+		perspective: 22px;
+		perspective-origin: 93% 102%;
+		transition: all 8s cubic-bezier(.23, 1, .32, 1);
+	}
 
 	// global transition time/next css animation shorter/faster 3 times
 
