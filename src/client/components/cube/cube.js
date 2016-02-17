@@ -53,10 +53,32 @@ class Example {
   bindMole() {
     var mole = document.querySelector('.mole');
 
+    var back = document.querySelector('.back');
+
     console.log('wired', mole);
 
     mole.addEventListener('click', (event) => {
-      // event.target.classList.add(CLICKED_CLASS);
+      document.querySelector('.container').classList.add('resting', 'cube-right');
+      console.log('click!');
+
+
+      setTimeout(() => {
+        document.querySelector('.container').classList.add('resting');
+        document.querySelector('.container').classList.remove('cube-right');
+      }, 3500);
+    });
+
+    back.addEventListener('click', (event) => {
+      document.querySelector('.container').classList.add('cube-right');
+
+      setTimeout(() => {
+        document.querySelector('.container').classList.remove('resting');
+      }, 3500);
+
+      setTimeout(() => {
+        document.querySelector('.container').classList.remove('cube-right');
+      }, 4000);
+
       console.log('click!');
     });
   }
