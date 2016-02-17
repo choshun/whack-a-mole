@@ -55,12 +55,13 @@ class Example {
 
     var back = document.querySelector('.back');
 
+    var left = document.querySelector('.left');
+
     console.log('wired', mole);
 
     mole.addEventListener('click', (event) => {
       document.querySelector('.container').classList.add('resting', 'cube-right');
       console.log('click!');
-
 
       setTimeout(() => {
         document.querySelector('.container').classList.add('resting');
@@ -80,6 +81,20 @@ class Example {
       }, 4000);
 
       console.log('click!');
+    });
+
+    left.addEventListener('click', (event) => {
+      document.querySelector('.container').classList.toggle('wide');
+      document.querySelector('.container').classList.toggle('tall');
+      console.log('left!');
+
+      setTimeout(() => {
+        document.querySelector('.container').classList.toggle('perspective-lower-right');
+      }, 3000);
+
+      setTimeout(() => {
+        document.querySelector('.container').classList.toggle('perspective-lower-right');
+      }, 3800);
     });
   }
 
