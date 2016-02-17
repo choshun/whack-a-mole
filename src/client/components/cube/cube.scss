@@ -2,7 +2,7 @@
   $container-dimension: 270px;
 
   height: $container-dimension;
-  margin: 0 auto;
+  margin: 10% auto;
   position: relative;
   width: $container-dimension;
 }
@@ -10,7 +10,7 @@
 .cube {
   $opacity: .7;
   $cube-dimension: 196px;
-
+	transition: all 5s cubic-bezier(.23, 1, .32, 1);
   transform: translateZ( 60px );
   transform-style: preserve-3d;
 
@@ -21,6 +21,7 @@
 
   .right {
     background: rgba(199, 253, 0, $opacity);
+    transition: all 5s cubic-bezier(.23, 1, .32, 1);
     transform: rotateY( 140deg ) translateZ( 100px );
   }
 
@@ -48,6 +49,7 @@
     position: absolute;
     text-align: center;
     transform: rotateX( -180deg ) translateZ( 13px );
+    transition: all 5s cubic-bezier(.23, 1, .32, 1);
     width: $cube-dimension;
   }
 
@@ -59,7 +61,7 @@
 	  font-size: .5em;
 	  font-weight: 100;
 	  height: 100%;
-	  left: 29px;
+	  left: 189px;
 	  margin: 0;
 	  padding: 0;
 	  position: absolute;
@@ -68,7 +70,7 @@
 
 	.score {
 		display: block;
-		font-size: 70px;
+		font-size: .2em;
 		transform: rotate(180deg) scale(-1, 1);
 	}
 }
@@ -76,4 +78,100 @@
 .accessible {
 	position: relative;
 	left: -9999em;
+}
+
+.app {}
+
+.container {
+	transition: all 3s cubic-bezier(.23, 1, .32, 1);
+	perspective: 10000px;
+	perspective-origin: 33% 32%;
+
+	// cube states
+	&.resting {
+		transition: all 3s cubic-bezier(.23, 1, .32, 1);
+		perspective: 42px;
+		perspective-origin: 33% 32%;
+	}
+	
+	 // 170 deg
+	.open {
+
+	}
+
+	// look like a square
+	&.flat {
+		.back {
+			transform: rotateX(-180deg) translateZ(26px);
+
+			.score {
+				font-size: .1em;
+				transition: all 5s cubic-bezier(.23, 1, .32, 1);
+			}	
+		}
+
+		.right,
+		.top,
+		.left,
+		.bottom {
+			opacity: 0;
+		}
+	}
+
+	// 90deg agles
+	&.cube-right {
+	  .right {
+	    transform: rotateY( 90deg ) translateZ( 100px );
+	  }
+
+	  .top {
+	    transform: rotateX( 90deg ) translateZ( 100px );
+	  }
+
+	  .left {
+	    transform: rotateY( -90deg ) translateZ( 100px );
+	  }
+
+	  .bottom {
+	    transform: rotateX( -90deg ) translateZ( 100px );
+	  }
+	}
+
+	// change figure height
+	.tall {
+
+	}
+
+	// change figure width
+	.wide {
+
+	}
+
+	// perspective lower left
+	.perspective {
+		&.lower-left {
+
+		}
+	}
+
+	// perspective lower right
+
+	// perspective upper left
+
+	// perspective upper right
+
+	// sides moved to left
+
+	// sides to the right
+
+	// top bottom up
+
+	// top bottom down
+
+	// bg colors (4)
+
+	// panel colors (4) 
+
+	// global transition time/next css animation shorter/faster 3 times
+
 }
