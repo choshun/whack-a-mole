@@ -9,35 +9,102 @@ require('./page.scss');
  *
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
-import App from './components/app';
+// import App from './components/app';
 import Cube from './components/cube/cube';
+import Scheduler from './components/scheduler/scheduler';
 
 (() => {
   var gameState = {
-    appElement: document.getElementById('app'),
-    images: [
+    context: new window.AudioContext(),
+    globalSpeed: 1,
+    sequence: [
       {
-        'image': '/images/shmeh.jpg',
-        'name': 'art'
+        'time': 0,
+        'events': {
+          'setClass': 'container resting cube-right'
+        }
       },
       {
-        'image': '/images/bear-shark-unicornsurfing.jpg',
-        'name': 'art'
+        'time': 5.5,
+        'events': {
+          'setClass': 'container resting'
+        }
+      },
+      {
+        'time': 8.5,
+        'events': {
+          'setClass': 'container resting wide tall'
+        }
+      },
+      {
+        'time': 15.5,
+        'events': {
+          'setClass': 'container resting wide tall perspective-lower-right'
+        }
+      },
+      {
+        'time': 16.5,
+        'events': {
+          'setClass': 'container cube-right wide tall perspective-lower-right'
+        }
+      },
+      {
+        'time': 19.5,
+        'events': {
+          'setClass': 'container tall perspective-lower-right'
+        }
+      },
+      {
+        'time': 20.5,
+        'events': {
+          'setClass': 'container open perspective-lower-right'
+        }
+      },
+      {
+        'time': 24,
+        'events': {
+          'setClass': 'container resting perspective-lower-right'
+        }
+      },
+      {
+        'time': 24,
+        'events': {
+          'setClass': 'container resting'
+        }
+      },
+      {
+        'time': 28,
+        'events': {
+          'setClass': 'container resting cube-right'
+        }
+      },
+      {
+        'time': 31.5,
+        'events': {
+          'setClass': 'container cube-right'
+        }
+      },
+      {
+        'time': 32.5,
+        'events': {
+          'setClass': 'container'
+        }
       }
     ]
   };
 
-  var app = new App(gameState);
-  var cube = new Cube(app);
-
-  const CLICKED_CLASS = '_open';
+  var cube = new Cube(gameState);
+  var scheduler = new Scheduler(gameState, cube);
 
   function init() {
-    // render example
-    // cube.createImages();
-
-    // bind example
+    bindCube();
     cube.bindMole();
+  }
+
+  function bindCube() {
+    cube.score.addEventListener('click', (event) => {
+      scheduler.schedule();
+    });
   }
 
   init();
