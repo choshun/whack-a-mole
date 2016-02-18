@@ -1,43 +1,31 @@
 require('./page.scss');
 
 /**
- * Example page
+ * Whack a mole!
  *
- * Bootstraps the page.
- * All DOM bindings and app.state properties
- * should be set here.
+ * Bootstraps the app.
  *
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
-import App from './components/app';
+
 import Cube from './components/cube/cube';
+import Scheduler from './components/scheduler/scheduler';
 
 (() => {
-  var gameState = {
-    appElement: document.getElementById('app'),
-    images: [
-      {
-        'image': '/images/shmeh.jpg',
-        'name': 'art'
-      },
-      {
-        'image': '/images/bear-shark-unicornsurfing.jpg',
-        'name': 'art'
-      }
-    ]
-  };
 
-  var app = new App(gameState);
-  var cube = new Cube(app);
-
-  const CLICKED_CLASS = '_open';
+  var cube = new Cube();
+  var scheduler = new Scheduler(cube);
 
   function init() {
-    // render example
-    cube.createImages();
+    bindCubeforStart();
+    cube.bindMoles();
+  }
 
-    // bind example
-    cube.bindExample(CLICKED_CLASS);
+  function bindCubeforStart() {
+    cube.start.addEventListener('click', () => {
+      scheduler.startContext();
+      scheduler.schedule();
+    });
   }
 
   init();
