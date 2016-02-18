@@ -12,94 +12,17 @@ import Cube from './components/cube/cube';
 import Scheduler from './components/scheduler/scheduler';
 
 (() => {
-  var gameState = {
-    context: new window.AudioContext(),
-    globalSpeed: 1,
-    sequence: [
-      {
-        'time': 0,
-        'events': {
-          'setClass': 'container resting cube-right'
-        }
-      },
-      {
-        'time': 5.5,
-        'events': {
-          'setClass': 'container resting'
-        }
-      },
-      {
-        'time': 8.5,
-        'events': {
-          'setClass': 'container resting wide tall'
-        }
-      },
-      {
-        'time': 15.5,
-        'events': {
-          'setClass': 'container resting wide tall perspective-lower-right'
-        }
-      },
-      {
-        'time': 16.5,
-        'events': {
-          'setClass': 'container cube-right wide tall perspective-lower-right'
-        }
-      },
-      {
-        'time': 19.5,
-        'events': {
-          'setClass': 'container tall perspective-lower-right'
-        }
-      },
-      {
-        'time': 20.5,
-        'events': {
-          'setClass': 'container open perspective-lower-right'
-        }
-      },
-      {
-        'time': 24,
-        'events': {
-          'setClass': 'container resting perspective-lower-right'
-        }
-      },
-      {
-        'time': 24,
-        'events': {
-          'setClass': 'container resting'
-        }
-      },
-      {
-        'time': 28,
-        'events': {
-          'setClass': 'container resting cube-right'
-        }
-      },
-      {
-        'time': 31.5,
-        'events': {
-          'setClass': 'container cube-right'
-        }
-      },
-      {
-        'time': 32.5,
-        'events': {
-          'setClass': 'container'
-        }
-      }
-    ]
-  };
 
-  var cube = new Cube(gameState);
-  var scheduler = new Scheduler(gameState, cube);
+  var cube = new Cube();
+  var scheduler = new Scheduler(cube);
 
   function init() {
     bindCubeforStart();
   }
 
   function bindCubeforStart() {
-    cube.score.addEventListener('click', (event) => {
+    cube.score.addEventListener('click', () => {
+      scheduler.startContext();
       scheduler.schedule();
     });
   }

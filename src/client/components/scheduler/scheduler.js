@@ -1,3 +1,5 @@
+import Sequence from './sequence';
+
 /**
  * @class Scheduler
  *
@@ -9,11 +11,11 @@ class Scheduler {
   /*
    * @constructs Scheduler
    *
-   * @param {Object} globalState initial state
    * @param {Object} cube cube object to schedule
    */
-  constructor(globalState, cube) {
-    this.state = globalState || {};
+  constructor(cube) {
+    this.sequence = new Sequence().sequence;
+
     /**
      * Interval to try and refire schedule.
      * @type {Number} in ms
@@ -45,15 +47,19 @@ class Scheduler {
     this.play = true;
   }
 
+  startContext() {
+    this.context = new window.AudioContext();
+  }
+
   schedule() {
     var eventKey,
         trigger; // single event
 
-    trigger = this.state.sequence[this.index];
+    trigger = this.sequence[this.index];
     this.eventTime = trigger.time;
 
     // If the event time is less than now and a look ahead time window
-    if (this.eventTime < (this.state.context.currentTime +
+    if (this.eventTime < (this.context.currentTime +
         this.scheduleAheadTime)) {
 
       // fire callbacks
@@ -63,7 +69,7 @@ class Scheduler {
       }
 
       // keep going if there's more scheduled events
-      if (this.state.sequence[this.index + 1] !== undefined) {
+      if (this.sequence[this.index + 1] !== undefined) {
         this.index++;
       } else {
         this.play = false;
