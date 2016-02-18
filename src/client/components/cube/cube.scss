@@ -1,8 +1,7 @@
-
-// pretty! rgba(242,0,204,.7)
 .cube {
   $opacity: .7;
   $cube-dimension: 196px;
+
 	transition: all 5s cubic-bezier(.23, 1, .32, 1);
   transform: translateZ( 60px );
   transform-style: preserve-3d;
@@ -16,21 +15,57 @@
     background: rgba(199, 253, 0, $opacity);
     transition: all 5s cubic-bezier(.23, 1, .32, 1);
     transform: rotateY( 140deg ) translateZ( 100px );
+
+    .mole {
+      left: -100%;
+
+      &.move {
+        left: 500%;
+      }
+    }
   }
 
   .top {
     background-color: rgba(255, 238, 0, $opacity);
     transform: rotateX( 140deg ) translateZ( 100px );
+
+    .mole {
+      top: 100%;
+
+      &.move {
+        top: -500%;
+      }
+    }
   }
 
   .left {
     background-color: rgba(199, 253, 0, $opacity);
     transform: rotateY( -140deg ) translateZ( 100px );
+
+    .mole {
+      left: 100%;
+
+      &.move {
+        left: -500%;
+      }
+    }
   }
 
   .bottom {
     background-color: rgba(255, 238, 0, $opacity);
     transform: rotateX( -140deg ) translateZ( 100px );
+
+    .mole {
+      top: -100%;
+
+      &.move {
+        top: 500%;
+      }
+    }
+  }
+
+  .move {
+    transition: all 4s cubic-bezier(0.88, 0.01, 0.96, 0);
   }
 
   figure {
@@ -46,7 +81,8 @@
     width: $cube-dimension;
   }
 
-	.mole {
+	.mole,
+	.mascot {
 	  background-color: rgba(242, 0, 204, $opacity);
 	  border: 0;
 	  color: #fff;
@@ -54,15 +90,24 @@
 	  font-size: .5em;
 	  font-weight: 100;
 	  height: 100%;
-	  left: 189px;
+    left: 0;
 	  margin: 0;
 	  padding: 0;
 	  position: absolute;
+    top: 0;
 	  width: 100%;
+	}
 
-	  // TODO: faster moles
-	  // &.fast,
-	  // &.fastest
+	.mascot {
+		left: 189px;
+	}
+
+	.mole {
+	  &.scored {
+	  	cursor: none;
+      opacity: 0;
+      transition: all 1s cubic-bezier(.23, 1, .32, 1);
+	  }
 	}
 
 	.score {
@@ -84,19 +129,19 @@
   margin: 10% auto;
   position: relative;
   width: $container-dimension;
-
 	transition: all 3s cubic-bezier(.23, 1, .32, 1);
 	perspective: 10000px;
 	perspective-origin: 33% 32%;
 
-	// cube states
+	/**
+	 * cube states
+	**/
 	&.resting {
 		transition: all 3s cubic-bezier(.23, 1, .32, 1);
 		perspective: 42px;
 		perspective-origin: 33% 32%;
 	}
 	
-	 // 170deg
 	&.open {
 		.right {
 	    transform: rotateY(160deg) translateZ(10px);
@@ -115,7 +160,7 @@
 	  }
 	}
 
-	// 90deg agles
+	// 90deg angles
 	&.cube-right {
 	  .right {
 	    transform: rotateY( 90deg ) translateZ( 100px );
@@ -136,8 +181,10 @@
 
 	// change figure height
 	&.tall {
+		perspective: 102px;
+
 		figure {
-			height: 400px;
+			height: 500px;
 			transition: all 15s cubic-bezier(.23, 1, .32, 1);
 		}
 	}
@@ -150,13 +197,14 @@
 		}
 	}
 
-	// perspective lower right
 	&.perspective-lower-right {
 		perspective: 22px;
-		perspective-origin: 93% 102%;
+		perspective-origin: 53% 80%;
 		transition: all 8s cubic-bezier(.23, 1, .32, 1);
 	}
 
-	// global transition time/next css animation shorter/faster 3 times
-
+  &.perspective-upper-right {
+    perspective-origin: 23% 80%;
+    transition: all 8s cubic-bezier(.23, 1, .32, 1);
+  }
 }

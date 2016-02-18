@@ -18,10 +18,11 @@ import Scheduler from './components/scheduler/scheduler';
 
   function init() {
     bindCubeforStart();
+    cube.bindMoles();
   }
 
   function bindCubeforStart() {
-    cube.score.addEventListener('click', () => {
+    cube.start.addEventListener('click', () => {
       scheduler.startContext();
       scheduler.schedule();
     });
