@@ -1,5 +1,7 @@
 My take on whack a mole! ヽ(*≧ω≦)ﾉ
 
+Click on the purple divs to add to your score.
+
 ###Getting started:
 
 1. $ git clone https://github.com/choshun/whack-a-mole.git
