@@ -1,15 +1,13 @@
 require('./page.scss');
 
 /**
- * Example page
+ * Whack a mole!
  *
- * Bootstraps the page.
- * All DOM bindings and app.state properties
- * should be set here.
+ * Bootstraps the app.
  *
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
-// import App from './components/app';
+
 import Cube from './components/cube/cube';
 import Scheduler from './components/scheduler/scheduler';
 
@@ -97,11 +95,10 @@ import Scheduler from './components/scheduler/scheduler';
   var scheduler = new Scheduler(gameState, cube);
 
   function init() {
-    bindCube();
-    cube.bindMole();
+    bindCubeforStart();
   }
 
-  function bindCube() {
+  function bindCubeforStart() {
     cube.score.addEventListener('click', (event) => {
       scheduler.schedule();
     });
