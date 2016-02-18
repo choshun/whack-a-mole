@@ -15,6 +15,8 @@ class Scheduler {
    */
   constructor(cube) {
     this.sequence = new Sequence().sequence;
+    this.moveMoles = cube.moveMoles;
+    this.context;
 
     /**
      * Interval to try and refire schedule.
@@ -48,7 +50,9 @@ class Scheduler {
   }
 
   startContext() {
-    this.context = new window.AudioContext();
+    if (this.context === undefined) {
+      this.context = new window.AudioContext();
+    }
   }
 
   schedule() {
@@ -58,6 +62,8 @@ class Scheduler {
     trigger = this.sequence[this.index];
     this.eventTime = trigger.time;
 
+    console.log(this.eventTime, this.context.currentTime);
+
     // If the event time is less than now and a look ahead time window
     if (this.eventTime < (this.context.currentTime +
         this.scheduleAheadTime)) {
@@ -65,6 +71,8 @@ class Scheduler {
       // fire callbacks
       for (eventKey in trigger.events) {
         var eventValue = trigger.events[eventKey];
+
+        console.log('start?');
         this[eventKey](eventValue);
       }
 

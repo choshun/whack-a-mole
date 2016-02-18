@@ -17,7 +17,14 @@ class Sequence {
       {
         'time': 5.5,
         'events': {
+          'moveMoles': '2000',
           'setClass': 'container resting'
+        }
+      },
+      {
+        'time': 5.5,
+        'events': {
+          'setClass': 'cube slow'
         }
       },
       {
@@ -35,19 +42,20 @@ class Sequence {
       {
         'time': 16.5,
         'events': {
-          'setClass': 'container cube-right wide tall perspective-lower-right'
+          'setClass': 'container resting wide tall perspective-lower-right'
         }
       },
       {
         'time': 19.5,
         'events': {
-          'setClass': 'container tall perspective-lower-right'
+          'moveMoles': '2000',
+          'setClass': 'container resting tall perspective-upper-right'
         }
       },
       {
         'time': 20.5,
         'events': {
-          'setClass': 'container open perspective-lower-right'
+          'setClass': 'container resting open perspective-upper-right'
         }
       },
       {
