@@ -54,7 +54,14 @@ class Scheduler {
    */
   startContext() {
     if (this.context === undefined) {
-      this.context = new window.AudioContext();
+      var contextClass = window.AudioContext ||
+          window.webkitAudioContext ||
+          window.mozAudioContext || window.oAudioContext ||
+          window.msAudioContext;
+
+      if (contextClass) {
+        this.context = new contextClass();
+      }
     }
   }
 
@@ -75,8 +82,6 @@ class Scheduler {
       // fire callbacks
       for (eventKey in trigger.events) {
         var eventValue = trigger.events[eventKey];
-
-        console.log('start?');
         this[eventKey](eventValue);
       }
 
