@@ -3,26 +3,44 @@ require('./cube.scss');
 /**
  * @class Cube
  *
- * registers hits and sets off moles, adds classes that move it
- * just have a setTimeout with a time started by the scheduler
+ * Keeps score and sets off moles.
  *
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
 class Cube {
-  /*
-   * @constructs Example
-   *
-   * Gets images and renders them.
-   *
-   * @param {Object} state passed in initial state
+  /**
+   * @constructor Cube
    */
   constructor() {
+
+    /**
+     * Start DOM element.
+     * @type {Object}
+     */
     this.start = document.querySelector('.cube .score');
+
+    /**
+     * Game score.
+     * @type {Number}
+     */
     this.score = 0;
+
+    /**
+     * Style class for scored moles.
+     * @type {String}
+     */
     this.SCORED_CLASS = 'scored';
+
+    /**
+     * Collection of moles.
+     * @type {Object}
+     */
     this.moles = document.querySelectorAll('.mole');
   }
 
+  /**
+   * Binds the moles to click.
+   */
   bindMoles() {
     var i;
 
@@ -33,6 +51,9 @@ class Cube {
     } 
   }
 
+  /**
+   * Adds to score if mole is clicked.
+   */
   bindMole(event) {
     if (!event.target.classList.contains(this.SCORED_CLASS)) {
       this.addScore();
@@ -41,6 +62,11 @@ class Cube {
     event.target.classList.add(this.SCORED_CLASS);
   }
 
+  /**
+   * Randomly moves moles.
+   *
+   * @param {Number} speed in ms
+   */
   moveMoles(speed) {
     var movable,
         randomMoleIndex,
@@ -58,6 +84,9 @@ class Cube {
     }, speed);
   }
 
+  /**
+   * Increments your score.
+   */
   addScore() {
     this.score++;
   }

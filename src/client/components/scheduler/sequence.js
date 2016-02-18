@@ -7,6 +7,13 @@
  */
 class Sequence {
   constructor() {
+
+    /**
+     * Time, then event callbacks. Each callback needs to be unique.
+     * The resolution should be to one event cycle (~20 ms).
+     *
+     * @author choshun.snyder@gmail.com (Choshun Snyder)
+     */
     this.sequence = [
       {
         'time': 0,
@@ -15,7 +22,13 @@ class Sequence {
         }
       },
       {
-        'time': 5.5,
+        'time': 0.5,
+        'events': {
+          'setClass': 'app play'
+        }
+      },
+      {
+        'time': 3.5,
         'events': {
           'moveMoles': '2000',
           'setClass': 'container resting'
@@ -86,6 +99,12 @@ class Sequence {
         'time': 32.5,
         'events': {
           'setClass': 'container'
+        }
+      },
+      {
+        'time': 35,
+        'events': {
+          'setClass': 'app end'
         }
       }
     ];

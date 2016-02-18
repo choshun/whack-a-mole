@@ -8,8 +8,8 @@ import Sequence from './sequence';
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
 class Scheduler {
-  /*
-   * @constructs Scheduler
+  /**
+   * @constructor Scheduler
    *
    * @param {Object} cube cube object to schedule
    */
@@ -49,20 +49,24 @@ class Scheduler {
     this.play = true;
   }
 
+  /**
+   * Kicks off timer for animation events.
+   */
   startContext() {
     if (this.context === undefined) {
       this.context = new window.AudioContext();
     }
   }
 
+  /**
+   * Scheduler for sequence of events in sequence.js.
+   */
   schedule() {
     var eventKey,
         trigger; // single event
 
     trigger = this.sequence[this.index];
     this.eventTime = trigger.time;
-
-    console.log(this.eventTime, this.context.currentTime);
 
     // If the event time is less than now and a look ahead time window
     if (this.eventTime < (this.context.currentTime +
@@ -91,6 +95,11 @@ class Scheduler {
     }
   }
 
+  /**
+   * Scheduler for sequence of events in sequence.js.
+   *
+   * @param {String} theClass space delimited classes I want to add
+   */
   setClass(theClass) {
     document.querySelector('.' + theClass.split(' ')[0]).
         setAttribute('class', theClass);
