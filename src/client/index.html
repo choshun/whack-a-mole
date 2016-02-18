@@ -4,29 +4,50 @@
     <title>
       Whack a mole
     </title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
 
-    <main id="app">
-      <h1>Whack a mole!</h1>
+    <main class="app">
+      <h1 class="accessible">Whack a mole!</h1>
 
-      <section class="container" style="perspective: 42px; perspective-origin: 33% 32%;">
-      <div class="cube" class=" ">
-        <figure class="front">1</figure>
-        <figure class="back">2</figure>
-        <figure class="right" style="
-          background: radial-gradient(50% 50%, circle, transparent 10%, #000 10%);
-          /* background: -webkit-radial-gradient(50% 50%, circle, transparent 50%, #fff 100%); */
-          margin: 0 auto;
-            z-index:999;
-                               
-                               "><div style="background-color: red;width: 80px;position:relative;left: 129px;font-size: 20px;">(#ﾟДﾟ)</div>  </figure>
-        <figure class="left">4</figure>
-        <figure class="top">5</figure>
-        <figure class="bottom">6</figure>
-      </div>
-    </section>
+      <section class="container">
+        <div class="cube">
+          <figure class="back">
+            <figcaption class="score">start</figcaption>
+          </figure>
+          <figure class="right">
+            <button class="mascot">(#ﾟДﾟ)</button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+          </figure>
+          <figure class="bottom">
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+          </figure>
+          <figure class="left">
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+          </figure>
+          <figure class="top">
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+            <button class="mole resting"></button>
+          </figure>
+        </div>
+      </section>
     </main>
 
     <script src="bundle.js"></script>

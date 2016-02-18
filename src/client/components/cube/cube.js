@@ -1,79 +1,95 @@
 require('./cube.scss');
 
 /**
- * @class Example
+ * @class Cube
  *
- * Example
+ * Keeps score and sets off moles.
  *
  * @author choshun.snyder@gmail.com (Choshun Snyder)
  */
-class Example {
-  /*
-   * @constructs Example
-   *
-   * Gets images and renders them.
-   *
-   * @param {Object} state passed in initial state
+class Cube {
+  /**
+   * @constructor Cube
    */
-  constructor(globalState) {
-    this.state = globalState.state || {};
-    this._images = this._getImages(this.state.images);
-    this.section;
+  constructor() {
+
+    /**
+     * Start DOM element.
+     * @type {Object}
+     */
+    this.start = document.querySelector('.cube .score');
+
+    /**
+     * Game score.
+     * @type {Number}
+     */
+    this.score = 0;
+
+    /**
+     * Style class for scored moles.
+     * @type {String}
+     */
+    this.SCORED_CLASS = 'scored';
+
+    /**
+     * Collection of moles.
+     * @type {Object}
+     */
+    this.moles = document.querySelectorAll('.mole');
   }
 
   /**
-   * Renders html.
-   * @param {String} contents html to inject.
+   * Binds the moles to click.
    */
-  render(contents) {
-    if (this.section === undefined) {
-      this.section = document.createElement('section');
+  bindMoles() {
+    var i;
+
+    for (i = 0; i < this.moles.length; i++) {
+      this.moles[i].addEventListener('click', (event) => {
+        this.bindMole(event);
+      });
+    } 
+  }
+
+  /**
+   * Adds to score if mole is clicked.
+   */
+  bindMole(event) {
+    if (!event.target.classList.contains(this.SCORED_CLASS)) {
+      this.addScore();
     }
-
-    this.section.setAttribute('class', 'example');
-    this.section.innerHTML = contents;
-    this.state.appElement.appendChild(this.section);
+    this.start.innerHTML = this.score;
+    event.target.classList.add(this.SCORED_CLASS);
   }
 
   /**
-   * Creates html for images.
+   * Randomly moves moles.
+   *
+   * @param {Number} speed in ms
    */
-  createImages() {
-    var html = `
-            <ul class="image-list">
-              ${this._images.map(image => `
-                <li class="item" style="background-image:url(${image})" id="${image}">
-                </li>`).join('\n')}
-            </ul>
-        `;
+  moveMoles(speed) {
+    var movable,
+        randomMoleIndex,
+        activeMole;
+    
+    setInterval(() => {
+      movable = document.querySelectorAll('.mole.resting');
 
-    this.render(html);
-  }
-
-  bindExample(CLICKED_CLASS) {
-    var imageList = document.querySelector('.image-list');
-
-    imageList.addEventListener('click', (event) => {
-      event.target.classList.add(CLICKED_CLASS);
-      this.state.appElement.querySelector('h1').innerHTML =
-          event.target.getAttribute('id');
-    });
+      if (movable.length !== 0) {
+        randomMoleIndex = Math.floor(Math.random() * 10 % movable.length);
+        activeMole = movable[randomMoleIndex];
+        activeMole.classList.add('move');
+        activeMole.classList.remove('resting');
+      }
+    }, speed);
   }
 
   /**
-   * Gets canvas images from app.state.
-   * @param {Object} canvasImages canvasImages
+   * Increments your score.
    */
-  _getImages(exampleImages) {
-    var i,
-        images = [];
-
-    for (i = 0; i < exampleImages.length; i++) {
-      images.push(exampleImages[i].image);
-    }
-
-    return images;
+  addScore() {
+    this.score++;
   }
 }
 
-export default Example;
+export default Cube;
